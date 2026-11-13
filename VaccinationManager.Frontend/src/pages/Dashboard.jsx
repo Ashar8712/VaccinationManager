@@ -1,0 +1,10 @@
+import { useState } from 'react'
+import Sidebar from '../components/Sidebar'
+
+const placeholderMetrics = [
+  ['Total patients', '248', '↑ 12% this month', 'metric-blue'],
+  ['Total vaccinations', '1,429', '↑ 8% this month', 'metric-teal'],
+  ['Today’s appointments', '18', '4 remaining today', 'metric-amber'],
+  ['Pending tasks', '07', 'Needs your attention', 'metric-coral'],
+]
+export default function Dashboard() { const [sidebarOpen, setSidebarOpen] = useState(false); return <div className="dashboard-shell"><Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} /><main className="dashboard-main"><header className="dashboard-header"><button className="menu-toggle" onClick={() => setSidebarOpen(true)} aria-label="Open navigation">☰</button><div><p className="header-kicker">Thursday, September 3, 2026</p><h1>Good morning, Doctor</h1></div><div className="header-actions"><button className="notification-button" aria-label="Notifications">♧<i /></button><div className="avatar">DR</div><div className="user-meta"><strong>Dr Ashar</strong><span>Medical practitioner</span></div></div></header><section className="dashboard-content"><div className="welcome-banner"><div><p className="kicker">Your care overview</p><h2>Make today count.</h2><p>Here’s what’s happening across your practice.</p></div><div className="banner-symbol">✚</div></div><div className="section-heading"><div><p className="kicker">Practice snapshot</p><h2>At a glance</h2></div><span className="data-note">Placeholder data · Dashboard API coming soon</span></div><div className="metrics-grid">{placeholderMetrics.map(([label, value, detail, tone]) => <article className={`metric-card ${tone}`} key={label}><div className="metric-icon">✚</div><p>{label}</p><strong>{value}</strong><small>{detail}</small></article>)}</div><section className="empty-section"><div className="empty-icon">◷</div><div><h3>Your schedule will appear here</h3><p>Appointments and vaccination activity will be connected when the next dashboard APIs are available.</p></div><span>Coming soon</span></section></section></main></div> }
